@@ -32,7 +32,7 @@ node sever.js
 ```
 5. Open a new terminal window and navigate to the client directory:
 ```
-cd ../Backend
+cd ../Frontend
 ```
 6. Install the Angular dependencies:
 ```
