@@ -1,0 +1,306 @@
+@import "./theme";
+#header {
+  font-size: 2.5rem;
+  height: 200px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 50px;
+  left: 59px;
+  right: 0;
+}
+#sticky_header {
+  font-size: 40px;
+  height: 175px;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 50px;
+  left: 59px;
+  right: 0;
+  background: #f5f6ff;
+  font-weight: bold;
+  z-index: 16;
+  padding-top: 22px;
+  @media (max-width: 1440px) {
+    @include fontSize($font-header-large);
+    height: 125px;
+  }
+  .input-group input.form-control {
+    width: 315px;
+    padding-left: 44px;
+    margin: 0;
+  }
+  .dropdown.sm .dropdown-menu {
+    width: 217px;
+    font-weight: normal;
+  }
+  .btn {
+    min-height: 44px;
+  }
+}
+.relative-header {
+  position: relative !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+#header {
+  background-color: rgb(0, 150, 136);
+  color: rgb(255, 255, 255);
+  font-size: 1em;
+  // display: flex;
+  // justify-content: space-between;
+  // align-items: center;
+  padding: 0 24px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#header .left {
+  @include fontSize($font-md);
+  align-self: flex-start;
+  padding: 16px 24px 16px 0;
+}
+
+// #header .center{
+//   flex-grow: 1
+//   align-self: flex-end
+//   padding: 14px 0
+// }
+.pt-35 {
+  padding-top: 35px;
+}
+
+.list_title {
+  align-items: center;
+  text-align: center;
+  color: $text-01;
+  margin: 0px;
+  margin-top: 50px;
+  margin-bottom: 31px;
+  padding-bottom: 20px;
+}
+@media screen and (min-width: 992px) {
+  .relative-header {
+    margin: -40px -52px -20px !important;
+  }
+  .pt-0.hb-pt-lg-110 {
+    padding-top: 0px !important;
+  }
+  .hb-lg-desktop-hidden {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 992px) and (min-width: 769px) {
+  .hb-pt-md-135 {
+    padding-top: 0 !important;
+  }
+  .hb-md-desktop-hidden {
+    display: none;
+  }
+  .hb-lg-desktop-hidden {
+    display: block;
+  }
+  th.mat-header-cell {
+    top: 175px !important;
+  }
+  #sticky_mobile_header {
+    height: 124px;
+    margin: 0;
+    padding: 20px 8px 0;
+    position: sticky;
+    top: 50px;
+    left: 74px;
+    right: 15px;
+    background: #f5f6ff;
+    font-weight: 600;
+    @include fontSize($font-header-med);
+    line-height: 20px;
+    z-index: 10;
+    box-shadow: none;
+    .btn {
+      min-height: 44px;
+    }
+  }
+
+  .light-bg.wrapper {
+    padding: 0px 15px 20px;
+  }
+}
+.search-list,
+#sticky_header {
+  .input-group input.form-control {
+    height: 44px;
+    border-radius: 4px !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .hb-lg-desktop-hidden {
+    display: block;
+  }
+  #sticky_mobile_header {
+    height: 124px;
+    margin: 0;
+    padding: 20px 8px 0;
+    position: fixed;
+    top: 59px;
+    left: 0px;
+    right: 0;
+    background: #f5f6ff;
+    font-weight: bold;
+    @include fontSize($font-header-med);
+    line-height: 20px;
+    z-index: 16;
+    box-shadow: inset 0px 2px 2px rgba(28, 31, 97, 0.1);
+    .btn {
+      min-height: 44px;
+    }
+  }
+
+  table.mat-table {
+    padding-top: 125px;
+    @media screen and (max-width: 760px) {
+      padding-top: 20px !important;
+    }
+  }
+  th.mat-header-cell {
+    box-shadow: none !important;
+  }
+  .pt-sm-0 {
+    padding-top: 0 !important;
+  }
+  th.mat-header-cell {
+    top: 182px !important;
+  }
+  html[xmlns*=""] th.mat-header-cell {
+    top: 0px !important;
+  }
+
+  table.mat-table {
+    padding-top: 150px;
+    thead {
+      position: fixed !important;
+      top: 182px !important;
+      z-index: 12;
+      @media screen and (max-width: 760px) {
+        position: unset !important;
+      }
+      tr{
+        th:first-of-type{
+          @media screen and (max-width: 760px) {
+            min-width: 3rem;
+          }
+        }
+        th{
+          min-width: 7rem;
+        }
+      }
+    }
+    th.mat-header-cell {
+      position: unset !important;
+    }
+    tbody{
+      tr{
+        td{
+          div{
+            
+          }
+        }
+      }
+    }
+    // @media screen and( max-width: 760px) {
+
+      
+    // }
+  }
+
+  table.table-mobile-noPosition thead{
+    position: unset !important;
+  }
+  
+  table.mat-table.bordered-table1 {
+    padding-top: 0px;
+    thead {
+      position: relative !important;
+    }
+    th.mat-header-cell {
+      position: relative !important;
+      top: 0 !important;
+    }
+  }
+
+  .list_title {
+    padding-bottom: 0;
+  }
+  .filter-con {
+    margin-bottom: 0;
+    margin-top: 25px;
+  }
+  .search-list {
+    flex-grow: 1;
+    padding-left: 9px;
+    .input-group {
+      width: 100%;
+    }
+    .input-group input.form-control {
+      width: 100%;
+      height: 44px;
+      border-radius: 4px !important;
+    }
+  }
+  .square-btn {
+    max-width: 44px;
+  }
+  .table-empty_img {
+    width: 100%;
+  }
+}
+
+// iPhone X in portrait
+// @media only screen
+// and (min-device-width : 375px)
+// and (max-device-width : 812px)
+// and (-webkit-device-pixel-ratio : 3)
+// and (orientation : portrait) {
+
+//   table.mat-table {
+//     padding-top: 0!important;
+//   }
+//   th.mat-header-cell {
+//     box-shadow: none !important;
+//   }
+//   .pt-sm-0 {
+//     padding-top: 50px!important;
+//   }
+//   th.mat-header-cell {
+//     top:182px!important;
+//   }
+
+//     th.mat-header-cell {
+//       border-color: #CACCFF;
+//       background-color: #fff;
+//   }
+//  }
+
+//  @media only screen
+//     and (device-width: 414px)
+//     and (device-height: 896px)
+//     and (-webkit-device-pixel-ratio: 2)
+//     and (orientation : portrait) {
+
+//       table.mat-table {
+//         padding-top: 0!important;
+//       }
+//       th.mat-header-cell {
+//         box-shadow: none !important;
+//       }
+//       .pt-sm-0 {
+//         padding-top: 50px!important;
+//       }
+//       th.mat-header-cell {
+//         top:182px!important;
+//       }
+//      }
+

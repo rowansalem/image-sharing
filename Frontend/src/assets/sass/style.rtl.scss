@@ -1,0 +1,72 @@
+// @import "./styles";
+body {
+  direction: rtl;
+  font-family: "Tajawal", Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  .btn {
+    font-family: "Tajawal";
+  }
+}
+.m-portlet
+  .m-portlet__head
+  .m-portlet__head-caption
+  .m-portlet__head-title
+  .m-portlet__head-text {
+  font-family: "Tajawal";
+}
+.m-dropdown.m-dropdown--align-right .m-dropdown__wrapper {
+  right: unset;
+  left: 0;
+}
+.m-dropdown.m-dropdown--arrow .m-dropdown__arrow.m-dropdown__arrow--right {
+  left: 5px !important;
+  right: auto !important;
+}
+.m-btn--icon.m-btn--icon-only i {
+  left: 60%;
+}
+.m-checkbox > span:after {
+  transform: rotate(45deg);
+}
+.mat-paginator-icon {
+  -ms-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.m-btn--icon.m-btn--icon-only > i {
+  right: 2px;
+}
+
+//   Modal
+.modal-title {
+  margin-left: auto;
+}
+
+// Snackbar
+.mat-snack-bar-container {
+  direction: rtl;
+
+  m-action-natification {
+    width: 100%;
+
+    .m-mat-snackbar {
+      justify-content: space-between;
+
+      button {
+        background: transparent;
+        margin-left: -20px;
+        margin-right: auto;
+        border: 0;
+      }
+    }
+  }
+}
+@media (min-width: 1025px) {
+  .m-aside-left--fixed .m-body {
+    padding-left: 0px;
+  }
+  .m-aside-left--fixed.m-aside-left--minimize .m-body {
+    padding-left: 0;
+  }
+}

@@ -1,0 +1,112 @@
+<mat-toolbar color="primary" class="p-fixed">
+  <div>
+    <button
+      type="button"
+      aria-label="Toggle sidenav"
+      mat-icon-button
+      class="toggle-btn"
+      (click)="drawer.toggle(); isOpened()"
+    >
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+    <span
+      ><img class="logo" src="../../../assets/imgs/logo.svg" alt=""
+    /></span>
+
+    <div class="search-wrapper">
+      <mat-icon class="mat-18">search</mat-icon>
+      <input
+        type="text"
+        [placeholder]="'AUTH.INPUT.SEARCH_INPUT' | translate"
+      />
+    </div>
+  </div>
+
+  <div class="user">
+    <div class="notification">
+      <mat-icon class="mat-18">notifications</mat-icon>
+    </div>
+
+    <div
+      role="button"
+      mat-button
+      [matMenuTriggerFor]="language"
+      alt=""
+      class="notification"
+    >
+      <mat-icon class="mat-18 cursor-pointer">language</mat-icon>
+    </div>
+
+    <mat-menu #language="matMenu">
+      <button (click)="selectLanguage('en')" mat-menu-item *ngIf="lang == 'ar'">
+        <span>EN</span>
+      </button>
+      <button (click)="selectLanguage('ar')" mat-menu-item *ngIf="lang == 'en'">
+        <span>AR</span>
+      </button>
+    </mat-menu>
+
+    <div role="button" class="cursor-pointer">
+      <img
+        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80"
+        mat-button
+        [matMenuTriggerFor]="language"
+        alt=""
+        class="img"
+      />
+    </div>
+
+    <!-- <mat-menu #menu="matMenu">
+      <button (click)="logout()" mat-menu-item>Logout</button>
+    </mat-menu> -->
+  </div>
+</mat-toolbar>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav position-fixed p-0 px-2"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <mat-nav-list>
+      <div>
+        <a
+          mat-list-item
+          [routerLink]="['/images']"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <mat-icon class="mat-18">images</mat-icon>
+          <p>{{ "MENU.IMAGES" | translate }}</p>
+        </a>
+        <a
+          mat-list-item
+          [routerLink]="['/images/upload']"
+          routerLinkActive="active"
+        >
+          <mat-icon class="mat-18">upload</mat-icon>
+          <p>{{ "MENU.UPLOAD" | translate }}</p>
+        </a>
+      </div>
+
+      <!-- <div class="bottom" (click)="logout()">
+        <a mat-list-item [routerLink]="['/test']" routerLinkActive="active">
+          <mat-icon class="mat-18">logout</mat-icon>
+          <p>Logout</p>
+        </a>
+      </div> -->
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div
+      class="outlet-wrapper mt-3"
+      [ngStyle]="{
+        'margin-inline-start': manueIsOpened ? '200px' : '0px'
+      }"
+    >
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

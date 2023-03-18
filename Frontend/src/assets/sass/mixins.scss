@@ -1,0 +1,67 @@
+@mixin custombtns($color, $background, $borderColor) {
+	background: $background;
+	border: 1.5px solid $borderColor;
+	color: $color;
+}
+@mixin custombtnsHover($color, $background, $borderColor) {
+	background: $color;
+	border: 1px solid $borderColor;
+	color: $background;
+}
+
+@mixin filter($filter-type, $filter-amount) {
+	-webkit-filter: $filter-type + unquote("(#{$filter-amount})");
+	-moz-filter: $filter-type + unquote("(#{$filter-amount})");
+	-ms-filter: $filter-type + unquote("(#{$filter-amount})");
+	-o-filter: $filter-type + unquote("(#{$filter-amount})");
+	filter: $filter-type + unquote("(#{$filter-amount})");
+}
+
+@mixin transform($property) {
+	//How to use example >> @include transform(rotate(30deg));
+	-webkit-transform: $property;
+	-ms-transform: $property;
+	transform: $property;
+}
+@mixin containerStyling($bgColor, $borderWidth, $borderColor) {
+	background: $bgColor;
+	border: $borderWidth solid $borderColor;
+	outline: $borderWidth solid $borderColor;
+}
+
+@mixin fontSize($font-size) {
+  font-size: $font-size;
+
+  @media (max-width: 1440px) {
+    @if $font-size > 33px {
+      font-size: $font-size - 6px;
+    }
+    @else if $font-size < 10px {
+      font-size: $font-size;
+    }
+    @else if $font-size < 20px {
+      font-size: $font-size - 2px;
+    }
+    @else {
+      font-size: $font-size - 4px;
+    }
+  }
+}
+@mixin fontSizeImportant($font-size) {
+  font-size: $font-size !important;
+
+  @media (max-width: 1440px) {
+    @if $font-size > 33px {
+      font-size: $font-size - 6px !important;
+    }
+    @else if $font-size < 10px {
+      font-size: $font-size !important;
+    }
+    @else if $font-size < 20px {
+      font-size: $font-size - 2px !important;
+    }
+    @else {
+      font-size: $font-size - 4px !important;
+    }
+  }
+}

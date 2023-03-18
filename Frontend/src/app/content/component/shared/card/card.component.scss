@@ -1,0 +1,23 @@
+.card {
+  border: 1px solid #ecdada;
+  border-radius: 20px;
+  padding: 20px;
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .card-dvider {
+    height: 1px;
+    background-color: #e6dddd;
+  }
+  .card-date {
+    color: #ecdada;
+  }
+  .card-text {
+    height: 100%;
+  }
+}
+.pointer {
+  cursor: pointer;
+}

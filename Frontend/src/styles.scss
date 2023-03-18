@@ -1,0 +1,116 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "@angular/material" as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$image-sharing-primary: mat.define-palette(mat.$indigo-palette);
+$image-sharing-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$image-sharing-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$image-sharing-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $image-sharing-primary,
+      accent: $image-sharing-accent,
+      warn: $image-sharing-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($image-sharing-theme);
+
+@import "//cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css";
+@import "./assets/vendors/bootstrap-grid.min.css";
+
+@import "./assets/css/style.css";
+
+// @import "./assets/sass/__loader";
+@import "./assets/sass/notes-bar";
+@import "./assets/sass/_button";
+@import "./assets/sass/_spacing";
+@import "./assets/sass/__error.scss";
+@import "./assets/sass/_grid";
+@import "./assets/sass/_checkboxes-switches.scss";
+@import "./assets/sass/_base";
+@import "./assets/sass/_actions-tab";
+@import "./assets/sass/bloc-cards";
+@import "./assets/sass/_dropzone";
+@import "./assets/sass/_alerts";
+@import "./assets/sass/forms";
+@import "./assets/sass/_bloc-info";
+@import "./assets/sass/tabs";
+@import "./assets/sass/_nav";
+@import "./assets/sass/__inputs";
+@import "./assets/sass/modal";
+@import "./assets/sass/_tooltip.scss";
+@import "./assets/sass/_table";
+@import "./assets/sass/_pagination";
+@import "./assets/sass/_badges";
+@import "./assets/sass/_dropdowns";
+@import "./assets/sass/header.scss";
+@import "./assets/sass/typeahead.scss";
+@import "./assets/sass/_common-search-bar";
+@import "./assets/sass/shrink-header";
+@import "./assets/sass/slider";
+@import "./assets/sass/_create-steps";
+@import "./assets/sass/_quick-actions";
+@import "./assets/sass/_radios";
+@import "./assets/sass/_ng-select";
+@import "./assets/sass/_stepper";
+@import "./assets/sass/_datepicker";
+@import "./assets/sass/_sticky-footer";
+@import "./assets/sass/_sticky-header";
+@import "./assets/sass/_padding-margins";
+@import "./assets/sass/_roles-container";
+@import "./assets/sass/_icons-style";
+@import "./assets/sass/_toggler";
+@import "./assets/sass/_cards";
+@import "./assets/sass/_edit-mode";
+@import "./assets/sass/_owl-carousel";
+@import "./assets/sass/_tags";
+@import "./assets/sass/_colored-scale";
+@import "./assets/sass/_xxl-size-grid";
+@import "./assets/sass/_modals-tabs";
+@import "./assets/sass/_documents";
+@import "./assets/sass/_dropzone";
+@import "./assets/sass/_progressbar";
+@import "./assets/sass/_calendar";
+@import "./assets/sass/_documents";
+@import "./assets/sass/_loader";
+@import "./assets/sass/_bank-acc-inputs";
+@import "./assets/sass/_checkboxes-switches.scss";
+@import "./assets/sass/_status-box";
+@import "./assets/sass/_blue-block";
+@import "./assets/sass/_login";
+@import "./assets/sass/_widgets";
+@import "./assets/sass/_condo";
+@import "./assets/sass/_sidemenu";
+@import "./assets/sass/_paragraph";
+
+html[dir="rtl"] {
+  @import "./assets/sass/style.rtl.scss";
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

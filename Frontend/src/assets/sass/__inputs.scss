@@ -1,0 +1,21 @@
+@import "./theme";
+
+.mat-icon-search {
+  position: absolute;
+  top: 12px;
+  text-align: center;
+  width: 47px !important;
+  z-index: 1;
+  color: #9e9e9e;
+}
+.search-input {
+  background: #fafafa 0% 0% no-repeat padding-box;
+  border: 1px solid #d7ddff;
+  border-radius: 12px;
+  width: 100%;
+  padding-top: 16px;
+  padding-inline-start: 42px;
+  padding-bottom: 14px;
+  padding-inline-end: 16px;
+  position: relative;
+}

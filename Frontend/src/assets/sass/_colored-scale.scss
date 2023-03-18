@@ -1,0 +1,85 @@
+.colored-scal-container {
+  .cyanBG {
+    background: #28da9f;
+  }
+  .greenBG {
+    background: #67ef3c;
+  }
+  .limeBG {
+    background: #cbf834;
+  }
+  .amberBG {
+    background: #f8dc38;
+  }
+  .orangeBG {
+    background: #fbac2a;
+  }
+  .darkOrangeBG {
+    background: #fa723b;
+  }
+  .cardinalBG {
+    background: #d74857;
+  }
+  // purple
+  .purpleBg1 {
+    background: #fddfff;
+  }
+  .purpleBg2 {
+    background: #ffccfc;
+  }
+  .purpleBg3 {
+    background: #fbacff;
+  }
+  .purpleBg4 {
+    background: #f982fc;
+  }
+  .purpleBg5 {
+    background: #f45af9;
+  }
+  .purpleBg6 {
+    background: #e238f1;
+  }
+  .purpleBg7 {
+    background: #b224b6;
+  }
+  ul {
+    display: flex;
+    align-items: center;
+    li {
+      width: 22px;
+      height: 22px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 600;
+      @include fontSize($font-sm);
+      line-height: 20px;
+      text-align: center;
+      color: #ffffff;
+      &.active {
+        border: 2px solid #ffffff;
+        width: 31px;
+        height: 31px;
+        border-radius: 150px;
+        position: relative;
+        margin-right: -4px;
+        margin-left: -4px;
+        transition: all 0.2s ease-in-out;
+      }
+      &:first-child {
+        border-radius: 4px 0 0 4px;
+        &.active {
+          border-radius: 150px;
+          margin-left: 0;
+        }
+      }
+      &:last-child {
+        border-radius: 0 4px 4px 0;
+        &.active {
+          border-radius: 150px;
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}

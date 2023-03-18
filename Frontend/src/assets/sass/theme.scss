@@ -1,0 +1,323 @@
+// fonts
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+$font-stack:'Roboto', sans-serif;
+
+/*====================================  COLORS  ======================================*/
+:root {
+  --color-grey-light: #ebebeb;
+
+  --color-blue-light: #20caff;
+
+  --color-red: #ff1654;
+  --color-danger: #f04141;
+
+  --unnamed-color-e77c40: #e77c40;
+  --unnamed-color-50d8be: #50d8be;
+  --unnamed-color-8ec2f2: #8ec2f2;
+  --unnamed-color-252b42: #252b42;
+  --unnamed-color-0d1e4f: #0d1e4f;
+  --light-blue: #63c4f1;
+  --green-light: #d2ebe5;
+  --dark-blue-light: #d7ddff;
+  --light-blue-light: #cfeaf6;
+
+  --dark-blue: #0d1f4f;
+
+  --dark-grey-1: #737373;
+  --dark-grey: #757575;
+  --grey: #c1c2c5;
+  --grey-1: #bdbdbd;
+  --white-grey: #fafafa;
+
+  --color-white: #ffffff;
+  --backgrund: #f4f6f9;
+}
+
+/*------------------------- Brand ----------------------------*/
+// Primary brand  +  Interactive text  +  Primary icon color  +  Border highlight  +  Emphasis background //mohamed.
+$brand-01: #515ee3;
+// Secondary brand  +  Alerts //
+$brand-02: #dc3370;
+
+/*------------------------ Typography ------------------------*/
+// Headlines  +  Strong text  +  Paragraphs  +  Body text //
+$text-01: #0E1E51; // blue text
+// Links  +  Titles //
+$text-02: #515ee3;
+// Secondary text  +  Subtle text //
+$text-03: #8688af;
+// Form placeholder //
+$text-04: #bebed7;
+//    //
+$text-05: #454895;
+// Alert //
+$text-alert: #dc3370;
+// Inverse text color  +  Inverse icon color //
+$text-inverse: #ffffff;
+
+/*------------------------ Surface / Background ------------------------*/
+//  Primary background  +  Component shape background  //
+$ui-01: #ffffff;
+
+$ui-15: #f9faff;
+//  Secondary background  //
+$ui-02: #f5f6ff;
+//  Tertiary background  //
+$ui-03: #eeefff;
+// Subtle border Disabled state //
+$ui-04: #dee0f3;
+//
+$ui-05: #dee1ff;
+//
+$ui-06: #caccff;
+//
+$ui-07: #9396e7;
+//
+$ui-08: #454894;
+//
+$ui-09: #22256a;
+//
+$ui-10: #262848;
+//
+$ui-11:#FFF7DB;
+$ui-Brand: #515ee3;
+// 20% opacity bg //
+$ui-20-BG: rgba(0, 0, 0, 0.2);
+
+$ui-blue: #414fdd;
+$ui-hover1: #22256a;
+$ui-hover2: #1322bb;
+$ui-hover3: #515ee3;
+
+/*------------------------ Hover state ------------------------*/
+//  $brand-01 element hover  //
+$hover-primary: #707dff;
+// $brand-01 element selected //
+$selected: #1322bb;
+//  Row hover  //
+$hover-row: #f5f6ff;
+
+/* Support */
+$support-info: #22256a; //Tooltips
+
+$support-error: #dc3370; //Error
+$support-error-medium: #f6c7d8; //Error
+$support-error-light: #fae1ea; //Error
+$support-error-light1: #FFECF3; //Error
+$support-success: #2fbec9; //Success
+$support-success-medium: #98e2d9; //Success
+$support-success-light: #e7f1f2; //Success
+$support-success-text: #0b8686;
+$support-warning: #fa6917;
+$support-warning-light: #ffecd6;
+$support-warning-medium: #ffc29f;
+
+$support-default: #f9faff;
+
+//
+$light-brown: #ffecd6;
+$brown: #6a4022;
+
+$scrollbar-color: #d3d4d8;
+
+/*quick action colors*/
+$hb-q-cyan: #72d6c9;
+$hb-q-orange: #ffa63e;
+$cyan-hover: #d8edef;
+$orange-hover: #ffe4c4;
+/*quick action colors*/
+
+$font-xxxsm: 8px;
+$font-xxsm: 10px;
+$font-xsm: 12px;
+$font-sm: 14px;
+$font-md: 16px;
+$font-xmd: 18px;
+$font-header-med: 28px;
+$font-header-large: 34px;
+// font sizes
+
+.text-secondary {
+  color: #8688af;
+  font-weight: 600;
+  line-height: 25px;
+}
+.danger-cell {
+  background: $support-error-medium !important;
+  color: $support-error !important;
+}
+// borders
+$hb-border-ui-04: 1px solid #dee0f3;
+// borders
+.light-text {
+  color: #bebed7;
+}
+a.light-text:hover {
+  color: $ui-Brand;
+}
+.primary-text {
+  color: $text-01;
+}
+.primary-font {
+  color: $brand-01;
+}
+.bg-primary {
+  background: $ui-Brand;
+  color: #ffffff;
+}
+.text-alert {
+  color: $text-alert !important;
+}
+
+.bg-white {
+  background-color: $ui-01 !important;
+}
+.text-01 {
+  color: $text-01 !important;
+}
+.text-02 {
+  color: $text-02 !important;
+}
+.text-03 {
+  color: $text-03 !important;
+}
+.text-04 {
+  color: $text-04 !important;
+}
+.text-05 {
+  color: $text-05 !important;
+}
+.ui-02-bg {
+  background: $ui-02;
+}
+.ui-03-bg {
+  background: $ui-03 !important;
+}
+.ui-07 {
+  color: $ui-07 !important;
+}
+.ui-06 {
+  color: $ui-06 !important;
+}
+.bg-transparent {
+  background-color: transparent !important;
+}
+.text-white {
+  color: $ui-01 !important;
+}
+.hb-ui-brand {
+  color: $ui-Brand !important;
+}
+.bg-ui-03 {
+  background: $ui-03 !important;
+}
+.Blue-bg-Stoke {
+  background: $ui-03;
+  border: 1px solid $ui-06;
+}
+.white-bg-Stoke {
+  background: white;
+  border: 1px solid $ui-06;
+}
+.ui-05 {
+  color: $ui-05;
+}
+.ui-05-bg {
+  background: $ui-05 !important;
+}
+.ui-04-bg {
+  background: $ui-04 !important;
+}
+.ui-03-bg {
+  background: $ui-03 !important;
+}
+.ui-02-bg {
+  background: $ui-02 !important;
+}
+.ui-01-bg {
+  background: $ui-01 !important;
+}
+.ui-11-bg{
+  background: $ui-11 !important;
+}
+.ui-15-bg {
+  background: $ui-15 !important;
+}
+.hb-danger {
+  color: $text-alert !important;
+}
+.hb-success-bg {
+  background: $support-success-light !important;
+}
+.hb-success {
+  color: $support-success-text !important;
+}
+.ui-blue-bg {
+  background: $ui-blue;
+}
+.ui-blue {
+  color: $ui-blue;
+}
+.hb-orange-color {
+  color: $hb-q-orange !important;
+}
+.hb-orange-bg {
+  background: $hb-q-orange !important;
+}
+.hb-cyan-color {
+  color: $hb-q-cyan !important;
+}
+.hb-cyan-bg {
+  background: $hb-q-cyan !important;
+}
+
+.hb-danger-label {
+  color: $support-error !important;
+}
+.hb-danger-label-bg {
+  background: $support-error-light !important;
+}
+.hb-danger-border {
+  border: 1px solid $support-error;
+}
+.hb-orange-light {
+  background: $orange-hover !important;
+}
+
+.support-success-bg {
+  background: $support-success-text !important;
+}
+.bg-brown {
+  background: $light-brown !important;
+}
+.brown-text {
+  color: $brown !important;
+}
+
+.text-06 {
+  color: $ui-06 !important;
+}
+.support-success-text {
+  color: $support-success-text !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+.line-height-initial {
+  line-height: normal;
+}
+
+.bg-blue-gradient{
+  background: transparent
+  linear-gradient(
+    238deg,
+    var(--dark-blue) 0%,
+    var(--dark-blue) 65%,
+    #000000e6 100%
+  )
+  0% 0% no-repeat padding-box;
+background: transparent
+  linear-gradient(238deg, #0d1f4f 0%, #0d1f4f 65%, #000000e6 100%) 0% 0%
+  no-repeat padding-box;
+}

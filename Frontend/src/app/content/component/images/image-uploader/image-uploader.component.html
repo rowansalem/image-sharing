@@ -1,0 +1,189 @@
+<form
+  autocomplete="off"
+  #myForm="ngForm"
+  #formElement
+  class="w-100 "
+  name="uploadForm"
+>
+  <div class="mt-5 pt-5 body">
+    <div class="d-flex align-items-start">
+      <div class="flex-baise-50">
+        <div *ngIf="!logoFile" class="w-100 d-flex">
+          <div class="lc-mobile-hidden w-100" *ngIf="!isUploaded">
+            <div class="aside-dropzone d-flex justify-content-center">
+              <app-documents-dropzone
+                [accept]="'image/jpeg,image/jpg,image/png'"
+                [isAside]="false"
+                [infoHelp]="false"
+                [objectName]="externalId"
+                [documents]="documentsUploaded"
+                [formData]="formData"
+                [hideTitle]="false"
+                [image]="document"
+                [showMsg]="false"
+                [required]="true"
+                (closeDropzone)="addDocument($event)"
+              >
+              </app-documents-dropzone>
+            </div>
+          </div>
+
+          <app-image-cropper
+            *ngIf="isUploaded"
+            [logoFile]="uploadedFile"
+            [hasLogo]="false"
+            [logoUrl]="logoCropped"
+            (cropUpdate)="update($event)"
+          ></app-image-cropper>
+        </div>
+
+        <div *ngIf="logoFile" class="w-100 d-flex">
+          <app-image-cropper
+            [logoFile]="logoFile"
+            [logoUrl]="logoUrl"
+            [hasLogo]="true"
+            [stringUrl]="stringUrl"
+            (cropUpdate)="update($event)"
+          ></app-image-cropper>
+        </div>
+      </div>
+
+      <div class="mx-5">
+        <h4 class="text-font-size-18 primary-text mb-4">
+          {{ "UPLOAD.FORMATS_ACCEPTED" | translate }}
+        </h4>
+
+        <ul>
+          <li class="text-font-size-16 d-flex lc-align-center primary-text">
+            •
+            <p class="mx-2">
+              {{ "UPLOAD.PNG_JPG_JPEG" | translate }}
+            </p>
+          </li>
+
+          <li class="text-font-size-16 d-flex lc-align-center primary-text">
+            •
+            <p class="mx-2">
+              {{ "UPLOAD.SIZE_LIMIT_MO" | translate }}
+            </p>
+          </li>
+        </ul>
+        <div class="d-flex flex-column">
+          <div>
+            <mat-form-field class="mt-2 w-100">
+              <mat-label>{{ "UPLOAD.FILE_DEC" | translate }}</mat-label>
+              <textarea
+                type="email"
+                matInput
+                placeholder="description"
+                name="fileDec"
+                [(ngModel)]="FileDescription"
+              ></textarea>
+              <mat-hint>{{ "UPLOAD.FILE_DEC" | translate }}</mat-hint>
+            </mat-form-field>
+          </div>
+        </div>
+        <button
+          class="btn btn-primary lc-flex mt-4"
+          *ngIf="isUploaded"
+          [disabled]="deleteDisabled"
+          (click)="reset()"
+        >
+          <span>{{ "UPLOAD.DELETE" | translate }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- IF UPLOAD HAS FAILD -->
+  <div class="form-row col-12">
+    <div
+      class="lc-alert lc-warning-alert lc-margin-top-35 m-0 w-100"
+      id="warning"
+      *ngIf="uploadFailed"
+    >
+      <div class="d-flex align-items-center justify-content-between w-100">
+        <div class="d-flex align-items-center">
+          <div>
+            <i class="lc-icon__times"></i>
+          </div>
+          <div>
+            <p>{{ "UPLOAD.SIZE_INFORMATION" | translate }}</p>
+          </div>
+        </div>
+        <div
+          class="d-flex align-items-center justify-content-end cursor-pointer"
+          (click)="ignoreChanges()"
+        >
+          <div
+            class="d-flex align-items-center justify-content-end cursor-pointer"
+          >
+            <i class="lc-icon__Close text-light text-font-size-16"></i>
+            <p class="text-bold">{{ "UPLOAD.IGNORE" | translate }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- SAVED -->
+  <div class="form-row col-12">
+    <div
+      *ngIf="saved"
+      class="lc-alert lc-success-alert lc-margin-top-50 m-0 w-100"
+    >
+      <div>
+        <i class="lc-icon__Check"></i>
+      </div>
+      <div>
+        <p>{{ "UPLOAD.CONFIRMATION" | translate }}</p>
+      </div>
+    </div>
+  </div>
+  <!-- UNSAVED -->
+  <div class="form-row col-12">
+    <div
+      *ngIf="unsaved"
+      class="lc-alert lc-warning-alert lc-margin-top-50 m-0 w-100"
+      id="warning"
+    >
+      <div class="d-flex align-items-center justify-content-between w-100">
+        <div class="d-flex align-items-center">
+          <div>
+            <i class="lc-icon__Warning"></i>
+          </div>
+          <div>
+            <p>{{ "UPLOAD.SAVE_REMINDER" | translate }}</p>
+          </div>
+        </div>
+        <div
+          class="d-flex align-items-center justify-content-end cursor-pointer"
+          (click)="ignoreChanges()"
+        >
+          <div
+            class="d-flex align-items-center justify-content-end cursor-pointer"
+          >
+            <i class="lc-icon__times text-light text-font-size-16"></i>
+            <p class="text-bold">{{ "UPLOAD.IGNORE" | translate }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- SAVE BTN -->
+  <div class="">
+    <button
+      type="button"
+      class="btn btn-primary btn-lg m-auto h-48"
+      style="margin-top: 30px !important"
+      [ngClass]="{ 'lc-disabled': loaderService.loaderModel.buttonLoader }"
+      (click)="confirm(myForm)"
+      [disabled]="!uploadedFile || !FileName || !FileDescription"
+    >
+      <span *ngIf="!loaderService.loaderModel.buttonLoader">{{
+        "UPLOAD.SAVE" | translate
+      }}</span>
+      <div *ngIf="loaderService.loaderModel.buttonLoader">
+        <div class="lc-button-loader"></div>
+      </div>
+    </button>
+  </div>
+</form>

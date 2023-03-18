@@ -1,0 +1,9 @@
+<!-- if not auth -->
+<ng-container *ngIf="!isAuth">
+  <router-outlet></router-outlet>
+</ng-container>
+
+<!-- if auth -->
+<ng-container  *ngIf="isAuth">
+  <app-layout></app-layout>
+</ng-container>

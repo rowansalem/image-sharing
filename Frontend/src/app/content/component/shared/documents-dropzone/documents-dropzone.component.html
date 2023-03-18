@@ -1,0 +1,332 @@
+<p
+  class="text-font-size-16 text-bold text-01 mb-4"
+  *ngIf="!hideTitle"
+>
+  <span class="lc-margin-right-10">{{ "UPLOAD.TITLE" | translate }}</span>
+  <span *ngIf="required" class="text-font-size-20 danger-color">*</span>
+</p>
+
+<div
+  (change)="onSelect($event)"
+  [ngClass]="{
+    'ng-invalid input-danger':
+      (!files.length && required && showMsg) || isLargeFile
+  }"
+  [accept]="accept"
+  [multiple]="multiple"
+  [class.width-auto]="isVertical"
+  [maxFileSize]="maxFileSize"
+  [ngClass]="{
+    'align-items-center': isAside,
+    'custom-dropzone lc-custom-dropzone': !isMobile
+  }"
+  ngx-dropzone
+  required
+  [ngStyle]="{
+    height: isMobile ? '100%' : '',
+    border: isMobile ? 'none' : '',
+    'flex-direction': isMobile ? 'column' : ''
+  }"
+>
+  <!-- label and it's shape -->
+  <ngx-dropzone-label
+    [ngClass]="{ 'm-auto w-100': isMobile }"
+    [ngStyle]="{ border: isMobile ? 'none' : '' }"
+  >
+    <div
+      class="upload-card h-100 w-100 gap-2"
+      [ngClass]="{ 'upload-card--vertical': isVertical, 'd-none': isMobile }"
+    >
+      <div class="upload-card__icon">
+        <i class="lc-icon__Upload text-04"> </i>
+      </div>
+      <div class="upload-card__text">
+        <h4 class="upload-card__title">{{ "UPLOAD.DRAG" | translate }}</h4>
+        <h5 class="upload-card__desc">
+          {{ "UPLOAD.CLICK" | translate }}
+        </h5>
+      </div>
+      <div class="upload-card__btn d-flex align-items-center">
+        <span class="btn btn-primary lc-flex dropdown-toggle dropdown-toggle">
+          {{ "UPLOAD.BROWSE" | translate }}
+        </span>
+      </div>
+    </div>
+    <div
+      class="upload-card__btn"
+      *ngIf="isMobile"
+      [ngClass]="{ 'w-100': isMobile }"
+    >
+      <div
+        class="btn btn-primary lc-flex dropdown-toggle dropdown-toggle"
+        [ngClass]="{ 'w-100': isMobile }"
+      >
+        {{ "UPLOAD.BROWSE" | translate }}
+      </div>
+    </div>
+  </ngx-dropzone-label>
+  <!-- label and it's shape -->
+
+  <!-- the result of the upload -->
+  <ngx-dropzone-preview
+    (click)="$event.stopPropagation()"
+    (removed)="onRemove(f)"
+    [file]="f"
+    [removable]="true"
+    *ngFor="let f of files"
+    ngProjectAs="ngx-dropzone-preview"
+    [ngClass]="{
+      'aside-dropzone-preview': isAside
+    }"
+  >
+    <!-- SHOW IN PC -->
+    <ngx-dropzone-label
+      [ngClass]="{ 'flex-wrap': !isAside}"
+    >
+      <div
+        class="d-flex align-items-center p-0"
+        [ngClass]="isAside ? 'col-12' : 'col-7 col-md-5 '"
+      >
+        <i
+          *ngIf="
+            f.type != 'image/png' &&
+            f.type != 'image/jpg' &&
+            f.type != 'image/jpeg'
+          "
+          class="lc-icon__Doc text-font-size-32 ui-06"
+        >
+        </i>
+        <i
+          *ngIf="
+            f.type == 'image/png' ||
+            f.type == 'image/jpg' ||
+            f.type == 'image/jpeg'
+          "
+          class="lc-icon__Document text-font-size-32 ui-06"
+        >
+        </i>
+        <div
+          class="d-flex flex-column align-items-start w-80 lc-margin-left-15"
+        >
+          <p class="text-01 text-overflow-hidden">{{ f.name }}</p>
+          <p class="text-04">
+            <span>{{ f.size / 1024 | number : "1.0-0" }} KB</span>
+            <span *ngIf="progress < 100"> - 2 sec restantes</span>
+          </p>
+        </div>
+      </div>
+      <div
+        class="col d-flex align-items-center justify-content-between aside-progress"
+        [ngClass]="isAside ? ' ' : 'col-5 col-md-7 '"
+      >
+        <p class="col lc-document-progress">
+          <ngb-progressbar [value]="progress" type="info"></ngb-progressbar>
+        </p>
+
+        <div
+          class="d-flex justify-content-between align-items-center lc-margin-left-15"
+        >
+          <span
+            class="cursor-pointer text-font-size-14 lc-ui-brand"
+            *ngIf="progress < 100"
+            (click)="onRemove(f); $event.stopPropagation()"
+          >
+            {{ "UPLOAD.CANCEL" }}
+          </span>
+          <i
+            class="lc-icon__check-ac lc-success font-text-size-16 lc-margin-10"
+            *ngIf="progress == 100"
+          >
+          </i>
+          <i
+            (click)="onRemove(f); $event.stopPropagation()"
+            class="lc-icon__delete-ac text-02 font-text-size-16 lc-padding-10"
+            *ngIf="progress == 100"
+          >
+          </i>
+        </div>
+      </div>
+      <!-- aside hint  -->
+
+      <div *ngIf="isAside" class="aside-hint" [ngClass]="{ 'w-100': isAside }">
+        <p class="text-03 text-font-size-16 text-left">
+          Vous pourrez renommer le document à la sauvegarde de la facture.
+        </p>
+      </div>
+    </ngx-dropzone-label>
+    <!-- SHOW IN PC -->
+
+    <!-- SHOW IN MOBILE -->
+
+    <ngx-dropzone-label
+      *ngIf="isMobile"
+      [ngClass]="{ 'd-block position-relative': isMobile }"
+    >
+      <img
+        onerror="this.src='./assets/img/documents/image45-2.png';"
+        class="mt-3"
+        src="./assets/img/documents/image45-2.png"
+      />
+      <!-- PIC DUMMY -->
+
+      <!-- PIC INFORMATION -->
+      <div style="border-top: 1px solid #caccff; padding: 4px 6px; width: 100%">
+        <div
+          class="d-flex align-items-center p-0"
+          [ngClass]="{ 'w-100': isMobile }"
+        >
+          <div
+            class="d-flex flex-column align-items-start"
+            [ngClass]="{ 'w-100': isMobile }"
+          >
+            <p
+              class="text-01"
+              style="white-space: no-wrap"
+              [ngStyle]="{
+                'text-overflow': isMobile ? 'ellipsis' : '',
+                overflow: isMobile ? 'hidden' : '',
+                'white-space': isMobile ? 'nowrap' : ''
+              }"
+              [ngClass]="{ 'w-100': isMobile }"
+            >
+              {{ f.name }}
+            </p>
+            <p class="text-04">
+              <span>{{ f.size / 1024 | number : "1.0-0" }} KB</span>
+              <span *ngIf="progress < 100"> - 2 sec restantes</span>
+            </p>
+          </div>
+        </div>
+
+        <div
+          *ngIf="isAside"
+          class="aside-hint"
+          [ngClass]="{ 'w-100': isAside }"
+        >
+          <p class="text-03 text-font-size-16 text-left">
+            Vous pourrez renommer le document à la sauvegarde de la facture.
+          </p>
+        </div>
+      </div>
+      <!-- PIC INFORMATION -->
+    </ngx-dropzone-label>
+    <!-- SHOW IN MOBILE -->
+  </ngx-dropzone-preview>
+  <!-- the result of the upload -->
+
+  <div
+    (click)="$event.stopPropagation()"
+    *ngIf="files.length > 0 && !_disableSuggetions && !isAside"
+    class="w-100 lc-add-more-documents"
+    [ngClass]="{ 'px-0 pb-0 d-none': isMobile }"
+  >
+    <h5 class="text-03 lc-dropzone-radio">
+      {{ "Souhaitez-vous renommer le document ?" }}
+    </h5>
+    <div class="form-row">
+      <div
+        class="col-md-7 p-0 lc-margin-top-10"
+        [ngClass]="{
+          'input-danger': (fileName.invalid && showMsg) || isLargeFile
+        }"
+      >
+        <input
+          [(ngModel)]="image.fileName"
+          [disabled]="!select"
+          [ngClass]="{ 'ui-03-bg': !select }"
+          autocomplete="off"
+          class="form-control lc-rename-input"
+          name="fileName"
+          placeholder
+          type="text"
+          required
+          #fileName="ngModel"
+        />
+        <span
+          class="danger-color"
+          *ngIf="(fileName.invalid && showMsg) || isLargeFile"
+          >{{ "UPLOAD.SIZE_INFORMATION" }}</span
+        >
+      </div>
+    </div>
+    <div
+      class="d-flex align-items-center justify-content-start lc-margin-top-20"
+    >
+      <div (click)="$event.stopPropagation()" class="lc-radio-repeat">
+        <div class="d-flex align-items-center lc-height-fit">
+          <div
+            class="inputGroup general-radio-button general-radio-button-sm mr-3 mb-2"
+          >
+            <input
+              [(ngModel)]="select"
+              id="nameofDocumentYes"
+              name="nameofDocument"
+              type="radio"
+              [value]="true"
+              [disabled]="_disableSuggetions"
+            />
+            <label
+              class="w-100 justify-content-between d-flex"
+              for="nameofDocumentYes"
+            >
+              <div class="d-flex align-items-center">
+                <div class>
+                  <div class="lc-tags d-flex flex-row flex-wrap">
+                    <p class="body-1 mr-2">{{ "DOCUMENTS.RENAME" }}</p>
+                  </div>
+                </div>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div (click)="$event.stopPropagation()" class="lc-radio-repeat">
+        <div class="d-flex align-items-center lc-height-fit">
+          <div
+            class="inputGroup general-radio-button general-radio-button-sm mr-3 mb-2"
+          >
+            <input
+              [(ngModel)]="select"
+              id="nameofDocumentno"
+              name="nameofDocument"
+              type="radio"
+              [value]="false"
+            />
+            <label
+              class="w-100 justify-content-between d-flex"
+              for="nameofDocumentno"
+            >
+              <div class="d-flex align-items-center">
+                <div class>
+                  <div class="lc-tags d-flex flex-row flex-wrap">
+                    <p class="body-1 mr-2">
+                      {{ "DOCUMENTS.DONT_RENAME" }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Error Size Text -->
+<p class="danger-color my-3" *ngIf="!files.length && showMsg && isLargeFile">
+  {{ "UPLOAD.SIZE" | translate }}
+</p>
+<!-- Size Information Text -->
+<div
+  class="d-flex align-items-center justify-content-start w-100"
+  *ngIf="!isAside && infoHelp && !isMobile"
+>
+  <i class="lc-icon__info text-02 text-font-size-24 lc-margin-right-15"></i>
+  <p class="text-02 text-font-size-16">
+    {{ "UPLOAD.SIZE_INFORMATION" }}
+  </p>
+</div>
+<!-- Error Mandatory Text -->
+<p class="danger-color mt-3" *ngIf="!files.length && showMsg">
+  {{ "UPLOAD.SIZE_INFORMATION" }}
+</p>

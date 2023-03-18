@@ -1,0 +1,95 @@
+<div class="w-100 d-flex flex-column">
+  <div *ngIf="!logoReady">
+    <div class="lc-logo-container active d-flex">
+      <!-- <div #cropContainer style="display: block; width: 300px; height: 300px"> -->
+      <image-cropper
+        *ngIf="hasLogo"
+        [imageChangedEvent]="imageChangedEvent"
+        [imageURL]="stringUrl"
+        [maintainAspectRatio]="true"
+        [containWithinAspectRatio]="containWithinAspectRatio"
+        [resizeToWidth]="156"
+        [aspectRatio]="1 / 1"
+        [onlyScaleDown]="true"
+        [roundCropper]="false"
+        [transform]="transform"
+        [alignImage]="'left'"
+        [style.display]="showCropper ? null : 'none'"
+        (imageCropped)="imageCropped($event)"
+        (imageLoaded)="imageLoaded()"
+      >
+      </image-cropper>
+
+      <image-cropper
+        *ngIf="!hasLogo"
+        [imageChangedEvent]="imageChangedEvent"
+        [imageFile]="logoFile"
+        [maintainAspectRatio]="true"
+        [resizeToWidth]="300"
+        [resizeToHeight]="300"
+        [containWithinAspectRatio]="containWithinAspectRatio"
+        [aspectRatio]="1 / 1"
+        [onlyScaleDown]="true"
+        [roundCropper]="false"
+        [transform]="transform"
+        [alignImage]="'left'"
+        [style.display]="showCropper ? null : 'none'"
+        (imageCropped)="imageCropped($event)"
+        (imageLoaded)="imageLoaded()"
+      >
+      </image-cropper>
+      <!-- </div> -->
+    </div>
+    <div class="d-flex align-items-center">
+      <button
+        class="btn btn-icon-sm bg-white primary-text text-font-size-32 lc-margin-bottom-5"
+        (click)="zoomOut()"
+      >
+        -
+      </button>
+
+      <mat-slider
+        class="w-100"
+        aria-label="unit(s)"
+        [(ngModel)]="scale"
+        name="scale"
+        [step]="0.1"
+        (change)="updateScale($event)"
+        [max]="max"
+        [min]="min"
+      >
+      </mat-slider>
+
+      <button
+        class="btn btn-icon-sm bg-white primary-text text-font-size-32"
+        (click)="zoomIn()"
+      >
+        +
+      </button>
+    </div>
+
+    <div
+      class="m-auto d-flex justify-content-center gap-2 "
+      (click)="cancelCropping()"
+    >
+      <button class="btn btn-outline-primary btn-lg">
+        {{ "UPLOAD.CANCEL" | translate }}
+      </button>
+
+      <button
+        class="btn lc-margin-left-15 btn-primary btn-lg"
+        (click)="applyCropping()"
+      >
+        {{ "UPLOAD.SAVE" | translate }}
+      </button>
+    </div>
+  </div>
+  <div *ngIf="logoReady">
+    <div class="logo-container position-relative">
+      <button class="btn btn-icon-sm img-expand" (click)="cropLogo()">
+        <mat-icon class="mat-18">crop</mat-icon>
+      </button>
+      <img [src]="logoUrl" class="h-100 w-100 rounded" />
+    </div>
+  </div>
+</div>
